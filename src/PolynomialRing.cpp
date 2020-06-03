@@ -75,8 +75,9 @@ std::pair <Polynomial, Polynomial> PolynomialRing::div_mod(const Polynomial &lef
     const auto PolyLen = divisor.degree();
     const auto PolyDiff = divided.degree() - divisor.degree();
 
-    if(divided.degree() < divisor.degree())
+    if(PolyDiff < 0){
         return {Polynomial{0}, divided};
+    }
     std::vector <int64_t> div(PolyDiff+1);
     std::vector <int64_t> mod;
     auto rest = divided.coefficients();
